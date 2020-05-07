@@ -156,7 +156,7 @@ class DataLoader:
         except FileExistsError:
             logging.debug("'data' directory already exists.")
 
-        with open(os.path.join('data', strftime("%Y_%m_%d", gmtime()) + '_' + self.file_name), "w+") as file:
+        with open(os.path.join('data', strftime("%Y_%m_%d", gmtime()) + '_' + self.file_name), "w+", encoding='utf-8') as file:
             print("-" * 83)
             print(f"Guardando datos en {self.file_name}")
             self.items.to_csv(file, sep=",", decimal=".")
