@@ -1,11 +1,12 @@
 #!/usr/bin/env python
 
 import requests
+import logging
 import json
 import pandas as pd
 import re
+import os
 from time import gmtime, strftime
-import logging
 
 
 class DataLoader:
@@ -149,7 +150,13 @@ class DataLoader:
         self.items = data[self.columns]
 
     def export(self):
-        with open(self.file_name, "w+") as file:
+        # Make directory if it doesn't exist yet
+        try:
+            os.makedirs('data')
+        except FileExistsError:
+            logging.debug("'data' directory already exists.")
+
+        with open(os.path.join('data', strftime("%Y_%m_%d", gmtime()) + '_' + self.file_name), "w+") as file:
             print("-" * 83)
             print(f"Guardando datos en {self.file_name}")
             self.items.to_csv(file, sep=",", decimal=".")
