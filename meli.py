@@ -11,7 +11,7 @@ from time import gmtime, strftime
 
 class DataLoader:
     """
-    Loader class to search and format Mercado Libre data.
+    Loader class to search and format Mercado Libre's data.
     """
     states = [
         {
