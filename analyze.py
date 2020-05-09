@@ -7,6 +7,7 @@ import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 import matplotlib.axes
+import argparse
 
 
 class DataAnalizer:
@@ -102,8 +103,13 @@ class DataAnalizer:
 
 
 if __name__ == "__main__":
-    file_name = os.path.join('data', '2020_05_06_data.csv')
-    analizer = DataAnalizer(file_name)
+    parser = argparse.ArgumentParser(description='Analize used car market information from FILE.',
+                                     epilog='https://https://github.com/nahueespinosa/data-mercado-autos.git')
+
+    parser.add_argument('file', metavar='FILE', help='Data file path')
+    args = parser.parse_args()
+
+    analizer = DataAnalizer(args.file)
     analizer.graph_top_brands()
     analizer.graph_brand_prices(['Ford', 'Chevrolet', 'Renault', 'Peugeot'], 2018)
     analizer.graph_model_prices(['Ecosport', 'Onix'])
