@@ -25,16 +25,16 @@ class DataAnalizer:
                 (self.autos_df['year'] > 2014)
             ]
 
-    def graph_top_sales(self, limit=10):
+    def graph_top_brands(self, limit=10):
         """
-        Grafica ranking de marcas más vendidas
+        Grafica ranking de marcas más publicadas
         """
         # Cuenta unidades de cada marca
         brand_count = self.autos_df['brand'].value_counts()[:limit,]
 
         plt.figure(figsize=(10,5))
         sns.barplot(brand_count.index, brand_count.values, alpha=0.8)
-        plt.title(f"Top {limit} de marcas más vendidas")
+        plt.title(f"Top {limit} de marcas más publicadas")
         plt.ylabel("Número de publicaciones", fontsize=12)
         plt.xlabel("Marca", fontsize=12)
         plt.show()
@@ -104,6 +104,6 @@ class DataAnalizer:
 if __name__ == "__main__":
     file_name = os.path.join('data', '2020_05_06_data.csv')
     analizer = DataAnalizer(file_name)
-    analizer.graph_top_sales()
+    analizer.graph_top_brands()
     analizer.graph_brand_prices(['Ford', 'Chevrolet', 'Renault', 'Peugeot'], 2018)
     analizer.graph_model_prices(['Ecosport', 'Onix'])
