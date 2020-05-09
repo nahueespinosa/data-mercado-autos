@@ -39,7 +39,7 @@ class DataAnalizer:
         plt.xlabel("Marca", fontsize=12)
         plt.show()
 
-    def graph_brand_model_prices(self, brands, year, max_cols=2):
+    def graph_brand_prices(self, brands, year, max_cols=2):
         """
         Grafica comparativa de precios de modelos por marca y año
         """
@@ -104,6 +104,6 @@ class DataAnalizer:
 if __name__ == "__main__":
     file_name = os.path.join('data', '2020_05_06_data.csv')
     analizer = DataAnalizer(file_name)
-    # analizer.graph_top_sales()
-    analizer.graph_brand_model_prices(['Ford', 'Chevrolet', 'Renault', 'Peugeot'], 2018)
+    analizer.graph_top_sales()
+    analizer.graph_brand_prices(['Ford', 'Chevrolet', 'Renault', 'Peugeot'], 2018)
     analizer.graph_model_prices(['Ecosport', 'Onix'])
