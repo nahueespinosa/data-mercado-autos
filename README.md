@@ -48,13 +48,13 @@ analizer.graph_top_brands()
 ![Top Brands Plot](images/graph_top_brands.png)
 
 ```python
-analizer.graph_brand_prices()
+analizer.graph_brand_prices(['Ford', 'Chevrolet', 'Renault', 'Peugeot'], 2018)
 ```
 
 ![Brand Prices Plot](images/graph_brand_prices.png)
 
 ```python
-analizer.graph_model_prices()
+analizer.graph_model_prices(['Ecosport', 'Onix'])
 ```
 
 ![Model Prices Plot](images/graph_model_prices.png)
