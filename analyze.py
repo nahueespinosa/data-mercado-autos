@@ -46,7 +46,7 @@ class DataAnalizer:
         rows = math.ceil(len(brands) / max_cols)
         cols = 1 if len(brands) == 1 else max_cols
 
-        _, axes = plt.subplots(rows, cols)
+        _, axes = plt.subplots(rows, cols, figsize=(10, 5))
 
         for i, brand in enumerate(brands):
             autos_filtered_df = self.autos_df[
