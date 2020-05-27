@@ -165,7 +165,7 @@ class DataLoader:
 if __name__ == '__main__':
     # logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.DEBUG)
 
-    loader = DataLoader(page_limit=1)
+    loader = DataLoader()
     loader.search()
     loader.export()
 
