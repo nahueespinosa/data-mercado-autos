@@ -1,3 +1,4 @@
 [submodule "python-sdk"]
 	path = python-sdk
 	url = https://github.com/mercadolibre/python-sdk.git
+	ignore = all
