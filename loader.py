@@ -8,6 +8,12 @@ import re
 import os
 from time import gmtime, strftime
 
+import sys
+sys.path.append('./python-sdk/lib')
+from meli import Meli
+
+from dotenv import load_dotenv
+
 
 class DataLoader:
     """
@@ -164,6 +170,13 @@ class DataLoader:
 
 if __name__ == '__main__':
     # logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.DEBUG)
+
+    load_dotenv()
+    client_id = os.getenv("CLIENT_ID")
+    client_secret = os.getenv("CLIENT_SECRET")
+
+    if client_id is not None and client_secret is not None:
+        meli = Meli(client_id=client_id, client_secret=client_secret)
 
     loader = DataLoader()
     loader.search()
