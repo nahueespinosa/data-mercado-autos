@@ -17,10 +17,17 @@ $ pip3 install -r requirements.txt
 
 You'll find two python programs:
 
-- `meli.py`: contains the `DataLoader` class to download data using Mercado Libre's API.
+- `loader.py`: contains the `DataLoader` class to download data using Mercado Libre's API.
 - `analize.py`: contains the `DataAnalizer` class that can display information in useful plots.
 
-Note that to download more than 1000 items from Mercado Libre you'll need to provide an `access_token`. More information [here](https://developers.mercadolibre.com.ar/es_ar/autenticacion-y-autorizacion).
+Note that to download more than 1000 items from Mercado Libre you'll need to provide an `access_token`. See [here](https://developers.mercadolibre.com.ar/es_ar/autenticacion-y-autorizacion).
+
+You can create your own `.env` file from the provided `.env.example` with your [API keys](https://developers.mercadolibre.com.ar/devcenter/).
+
+```
+CLIENT_ID = 'YOUR_CLIENT_ID'
+CLIENT_SECRET = 'YOUR_CLIENT_SECRET'
+```
 
 You can find more information using the help argument:
 
