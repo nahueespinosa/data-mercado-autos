@@ -22,8 +22,6 @@ You'll find two python programs:
 
 Note that to download more than 1000 items from Mercado Libre you'll need to provide an `access_token`. See [here](https://developers.mercadolibre.com.ar/es_ar/autenticacion-y-autorizacion).
 
-You can create your own `.env` file from the provided `.env.example` with your [API keys](https://developers.mercadolibre.com.ar/devcenter/).
-
 ```
 CLIENT_ID = 'YOUR_CLIENT_ID'
 CLIENT_SECRET = 'YOUR_CLIENT_SECRET'

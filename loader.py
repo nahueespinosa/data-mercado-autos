@@ -8,12 +8,6 @@ import re
 import os
 from time import gmtime, strftime
 
-import sys
-sys.path.append('./python-sdk/lib')
-from meli import Meli
-
-from dotenv import load_dotenv
-
 
 class DataLoader:
     """
@@ -55,7 +49,11 @@ class DataLoader:
         self.file_name = file_name
         self.page_limit = page_limit
 
-    def get_access_token(self):
+    def get_access_token(self, app_id):
+        """
+        Returns access token submitting app_id, it is a web based authentication, so this app should be a web app.
+        """
+        # More info in: https://developers.mercadolibre.com.ar/es_ar/autenticacion-y-autorizacion
         raise NotImplementedError
 
     def get_category_id(self, category_name):
@@ -174,13 +172,6 @@ class DataLoader:
 
 if __name__ == '__main__':
     # logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.DEBUG)
-
-    load_dotenv()
-    client_id = os.getenv("CLIENT_ID")
-    client_secret = os.getenv("CLIENT_SECRET")
-
-    if client_id is not None and client_secret is not None:
-        meli = Meli(client_id=client_id, client_secret=client_secret)
 
     loader = DataLoader()
     loader.search("Autos, Motos y Otros")
