@@ -45,8 +45,6 @@ class DataLoader:
             "name":"Capital Federal"
         }
     ]
-    category_name = 'Autos, Motos y Otros'
-    categories_url = 'https://api.mercadolibre.com/sites/MLA/categories'
     search_url = 'http://api.mercadolibre.com/sites/MLA/search'
     access_token = None
     result_limit = 50
@@ -60,22 +58,28 @@ class DataLoader:
     def get_access_token(self):
         raise NotImplementedError
 
-    def search(self):
+    def get_category_id(self, category_name):
+        """
+        Returns the category id based on the category name.
+        If there is no category with the given name, returns None.
+        """
+        # More info in: https://developers.mercadolibre.com.ar/es_ar/categorias-y-atributos
+
+        jsdata = requests.get("https://api.mercadolibre.com/sites/MLA/categories").json()
+        category_data = next((item for item in jsdata if item['name'] == category_name), None)
+        
+        return category_data['id'] if category_data is not None else None
+
+    def search(self, category_name):
         """
         Request category data, perform a search and process pages to obtain items.
         """
-
-        # Get the desired category id
-        # https://developers.mercadolibre.com.ar/es_ar/categorias-y-atributos
-
-        jsdata = requests.get(self.categories_url).json()
-        category_data = next((item for item in jsdata if item['name'] == self.category_name), None)
-        self.category_id = category_data['id']
+        self.category_id = self.get_category_id(category_name)
 
         for state in self.states:
             # Get the number of pages in the search
             print("-" * 83)
-            print(f"Buscando: {self.category_name} en {state['name']}")
+            print(f"Buscando: {category_name} en {state['name']}")
 
             search_params = {
                 'category': self.category_id,
@@ -179,7 +183,7 @@ if __name__ == '__main__':
         meli = Meli(client_id=client_id, client_secret=client_secret)
 
     loader = DataLoader()
-    loader.search()
+    loader.search("Autos, Motos y Otros")
     loader.export()
 
     # print(loader.items)
