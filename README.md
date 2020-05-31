@@ -20,14 +20,19 @@ You'll find two python programs:
 - `loader.py`: contains the `DataLoader` class to download data using Mercado Libre's API.
 - `analize.py`: contains the `DataAnalizer` class that can display information in useful plots.
 
-Note that to download more than 1000 items from Mercado Libre you'll need to provide an `access_token`. See [here](https://developers.mercadolibre.com.ar/es_ar/autenticacion-y-autorizacion).
+Note that to download more than 1000 items from Mercado Libre you'll need to provide an `access_token`. Go to [this page](https://developers.mercadolibre.com.ar/es_ar/autenticacion-y-autorizacion#Obten-tu-access-token) and complete the form to get it.
 
-```
-CLIENT_ID = 'YOUR_CLIENT_ID'
-CLIENT_SECRET = 'YOUR_CLIENT_SECRET'
+In `loader.py` replace the `access_token` property with the one obtained from the form. The token will be valid for 6 hours according to documentation.
+
+```python
+if __name__ == '__main__':
+    loader = DataLoader()
+    loader.access_token = None
+    loader.search("Autos, Motos y Otros")
+    loader.export()
 ```
 
-You can find more information using the help argument:
+You can find more information about the tools using the help argument:
 
 ```
 $ python analize.py -h
