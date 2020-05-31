@@ -171,10 +171,7 @@ class DataLoader:
 
 
 if __name__ == '__main__':
-    # logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.DEBUG)
-
     loader = DataLoader()
+    loader.access_token = None
     loader.search("Autos, Motos y Otros")
     loader.export()
-
-    # print(loader.items)
